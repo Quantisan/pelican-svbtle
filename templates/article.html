@@ -16,7 +16,7 @@
                 Posted {{ article.locale_date }}
             </div>
 
-            {% include 'addthis.html' %} 
+            {% include 'addthis.html' %}
         </div>
 
         <div id="article_meta">
@@ -40,7 +40,7 @@
                 {% for related_post in article.related_posts %}
                 <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
                 {% endfor %}
-            </ul>            
+            </ul>
         </div>
         {% endif %}
 
