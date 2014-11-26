@@ -2,53 +2,59 @@
 {% block title %}{{ article.title }} - {{ SITENAME }}{%endblock%}
 {% block content %}
 <article>
-    <h1 class="title">
-        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a>
-    </h1>
+  <h1 class="title">
+    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a>
+  </h1>
 
-    <div class='article-content'>
-        {{ article.content }}
+  <div class='article-content'>
+    {{ article.content }}
+  </div>
+
+  <div class='post-footer'>
+    <div class='share-footer'>
+      <div id='dated' class="abbr published" title='{{ article.date.isoformat() }}'>
+        Posted {{ article.locale_date }}
+      </div>
+
+      {% include 'addthis.html' %}
     </div>
 
-    <div class='post-footer'>
-        <div class='share-footer'>
-            <div id='dated' class="abbr published" title='{{ article.date.isoformat() }}'>
-                Posted {{ article.locale_date }}
-            </div>
+    <div id="article_meta">
+      {% if not article.category == 'posts' %}
+      Category:
+      <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+      {% endif %}
+      {% if article.tags %}
+      <br />Tags:
+      {% for tag in article.tags %}
+      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+      {% endfor %}
+      {% endif %}
+    </div>
 
-            {% include 'addthis.html' %}
-        </div>
+    <div id="article_prevnext">
+      <h3>Next articles</h3>
 
-        <div id="article_meta">
-            {% if not article.category == 'posts' %}
-            Category:
-            <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-            {% endif %}
-            {% if article.tags %}
-            <br />Tags:
-            {% for tag in article.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-            {% endfor %}
-            {% endif %}
-        </div>
+      {% if article.prev_article_in_category %}
+      <a href="{{ SITEURL }}/{{ article.prev_article_in_category.url}}">
+        &#10094; {{ article.prev_article_in_category.title|truncate(70) }}
+      </a>
+      {% endif %}
 
-        {% if article.related_posts %}
-        <div class='related-posts'>
-            <h2>Related Posts:</h2>
-
-            <ul>
-                {% for related_post in article.related_posts %}
-                <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+      <div align="right">
+        {% if article.next_article_in_category %}
+        <a href="{{ SITEURL }}/{{ article.next_article_in_category.url}}">
+          {{ article.next_article_in_category.title|truncate(70) }} &#10095;
+        </a>
         {% endif %}
-
+      </div>
     </div>
+
+  </div>
 </article>
 
 <footer>
-    <a href="{{ SITEURL }}/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+  <a href="{{ SITEURL }}/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
 </footer>
 
 {% endblock %}
