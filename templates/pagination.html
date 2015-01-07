@@ -9,9 +9,9 @@
 		    {% endif %}
                  {% else %}
                     {% if articles_page.previous_page_number() == 1 %}
-			<a href="{{ SITEURL }}/{{ page_name }}/index.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+			<a href="{{ SITEURL }}/{{ page_name }}index.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
 		    {% else %}
-		        <a href="{{ SITEURL }}/{{ page_name }}/index{{ articles_page.previous_page_number() }}.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+		        <a href="{{ SITEURL }}/{{ page_name }}index{{ articles_page.previous_page_number() }}.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
 		    {% endif %}
                  {% endif %}
 
@@ -20,7 +20,7 @@
                 {% if page_name == "index" %}
                     <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html" class="button_accent" style="position: absolute; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
                 {% else %}
-                    <a href="{{ SITEURL }}/{{ page_name }}/index{{ articles_page.next_page_number() }}.html" class="button_accent" style="position: absolute; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
+                    <a href="{{ SITEURL }}/{{ page_name }}index{{ articles_page.next_page_number() }}.html" class="button_accent" style="position: absolute; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
                 {% endif %}
 	{% endif %}
 </p>
