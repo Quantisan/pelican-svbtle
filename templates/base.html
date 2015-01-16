@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/webicons.css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
 	<link href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
 	{% if FEED_RSS %}
@@ -70,10 +71,12 @@
         <div class="user_meta">
             <h1 id="user"><a href="{{ SITEURL }}" class="">{{ AUTHOR }}</a></h1>
             <h2>{{ TAGLINE }}</h2>
+
             <ul>
                 {% for title, link in MENUITEMS %}
                     <li><a href="{{ link }}">{{ title }}</a></li>
                 {% endfor %}
+
                 {% if DISPLAY_PAGES_ON_MENU %}
                     {% for p in PAGES %}
                         <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
@@ -83,16 +86,17 @@
                         <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                     {% endfor %}
                 {% endif %}
-                {% for name, link in SOCIAL+LINKS %}
-                        <li><a href="{{ link }}">{{ name }}</a></li>
-                {% endfor %}
             </ul>
         </div>
+
         <footer>
-            <address>
-                Powered by <a href='http://docs.getpelican.com/en/latest/'>Pelican</a>,
-                <a href='https://github.com/jamescooke/pelican-svbtle#readme'>theme info</a>.
-            </address>
+            <div class="social_icons">
+                <a class="webicon mail" href="#">Mail</a>
+                <a class="webicon twitter" href="#">Twitter</a>
+                <a class="webicon github" href="#">Github</a>
+                <a class="webicon linkedin" href="#">Linkedin</a>
+                <a class="webicon rss" href="#">RSS</a>
+            </div>
         </footer>
     </section>
 
