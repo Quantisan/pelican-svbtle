@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ article.title }} - {{ SITENAME }}{%endblock%}
+{% block title %}{{ SITENAME }} | {{ article.title }}{%endblock%}
 {% block content %}
 <article>
   <h1 class="title">
@@ -54,7 +54,7 @@
 </article>
 
 <footer>
-  <a href="{{ SITEURL }}/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+  <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS }}" class="button_accent">See all articles</a>
 </footer>
 
 {% endblock %}
