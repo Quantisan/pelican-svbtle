@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/webicons.css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
 	<link href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
 	{% if FEED_RSS %}
@@ -37,29 +38,31 @@
         <div class="user_meta">
             <h1 id="user"><a href="{{ SITEURL }}" class="">{{ AUTHOR }}</a></h1>
             <h2>{{ TAGLINE }}</h2>
-                {% if AUTHOR_BIO %}
-                    <p class="bio">{{ AUTHOR_BIO }}</p>
-                {% endif %}
+            {% if AUTHOR_BIO %}
+                <p class="bio">{{ AUTHOR_BIO }}</p>
+            {% endif %}
         </div>
-        <div class="nav-button">
-            <ul>
-                    {% for title, link in MENUITEMS %}
-                            <li><a href="{{ link }}">{{ title }}</a></li>
-                    {% endfor %}
-                    {% if DISPLAY_PAGES_ON_MENU %}
-                            {% for p in PAGES %}
-                                    <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                            {% endfor %}
-                    {% else %}
-                            {% for cat, null in categories %}
-                                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                            {% endfor %}
-                    {% endif %}
-                    {% for name, link in SOCIAL+LINKS %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                    {% endfor %}
-             </ul>
-         </div>
+        <div class="nav-icons">
+            <a href="/about/">About</a>
+            {% if EMAIL %}
+            <a class="webicon mail small" href="mail:{{ EMAIL }}">Mail</a>
+            {% endif %}
+            {% if TWITTER_LINK %}
+            <a class="webicon twitter small" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
+            {% endif %}
+            {% if GITHUB_LINK %}
+            <a class="webicon github small" href="{{ GITHUB_LINK }}" target="_blank">Github</a>
+            {% endif %}
+            {% if LINKEDIN_LINK %}
+            <a class="webicon linkedin small" href="{{ LINKEDIN_LINK }}" target="_blank">Linkedin</a>
+            {% endif %}
+            {% if SOUNDCLOUD_LINK %}
+            <a class="webicon soundcloud small" href="{{ SOUNDCLOUD_LINK }}" target="_blank">Soundcloud</a>
+            {% endif %}
+            {% if RSS_LINK %}
+            <a class="webicon rss small" href="{{ RSS_LINK }}">RSS</a>
+            {% endif %}
+        </div>
      </section>
 
      <section id="sidebar">
@@ -70,29 +73,34 @@
         <div class="user_meta">
             <h1 id="user"><a href="{{ SITEURL }}" class="">{{ AUTHOR }}</a></h1>
             <h2>{{ TAGLINE }}</h2>
-            <ul>
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    {% for p in PAGES %}
-                        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                    {% endfor %}
-                {% else %}
-                    {% for cat, null in categories %}
-                        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                    {% endfor %}
-                {% endif %}
-                {% for name, link in SOCIAL+LINKS %}
-                        <li><a href="{{ link }}">{{ name }}</a></li>
-                {% endfor %}
-            </ul>
+            {% if AUTHOR_BIO %}
+                <p class="bio">{{ AUTHOR_BIO }}</p>
+            {% endif %}
         </div>
+
         <footer>
-            <address>
-                Powered by <a href='http://docs.getpelican.com/en/latest/'>Pelican</a>,
-                <a href='https://github.com/jamescooke/pelican-svbtle#readme'>theme info</a>.
-            </address>
+            <div class="social_icons">
+                <p><a href="/about/">About {{ AUTHOR }}</a></p>
+
+                {% if EMAIL %}
+                <a class="webicon mail" href="mail:{{ EMAIL }}" target="_blank">Mail</a>
+                {% endif %}
+                {% if TWITTER_LINK %}
+                <a class="webicon twitter" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
+                {% endif %}
+                {% if GITHUB_LINK %}
+                <a class="webicon github" href="{{ GITHUB_LINK }}" target="_blank">Github</a>
+                {% endif %}
+                {% if LINKEDIN_LINK %}
+                <a class="webicon linkedin" href="{{ LINKEDIN_LINK }}" target="_blank">Linkedin</a>
+                {% endif %}
+                {% if SOUNDCLOUD_LINK %}
+                <a class="webicon soundcloud" href="{{ SOUNDCLOUD_LINK }}" target="_blank">Soundcloud</a>
+                {% endif %}
+                {% if RSS_LINK %}
+                <a class="webicon rss" href="{{ RSS_LINK }}">RSS</a>
+                {% endif %}
+            </div>
         </footer>
     </section>
 
