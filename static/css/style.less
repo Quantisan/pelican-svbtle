@@ -5,6 +5,8 @@
 @med-grey:      #999999;
 @dark-grey:     #4d4d4d;
 @blue:          #0e94ec;
+@green:         #0eec94;
+@red:           #ec0e94;
 
 @accent:        @blue;
 
@@ -116,6 +118,34 @@ a {
         text-transform: uppercase;
         font-weight: 300px;
         font-size: 0.9em;
+}
+
+#homepage-blurb {
+    padding-top: 3em;
+    max-width: 49em;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+        display: block;
+    }
+
+    p {
+        font-size: 1.33em;
+        line-height: 133%;
+        font-weight: 300;
+        font-style: italic;
+        width: 85%;
+    }
+
+    a {
+        color: @blue;
+        font-weight: 400;
+    }
+
+    .red {
+        color: @red;
+    }
 }
 
 .article-content {
