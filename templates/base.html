@@ -42,6 +42,13 @@
                 <p class="bio">{{ AUTHOR_BIO }}</p>
             {% endif %}
         </div>
+        <div>
+            <a href="/">About</a>&nbsp;&nbsp;
+            <a href="/articles.html">Articles</a>&nbsp;&nbsp;
+            {% for p in PAGES %}
+                <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
+            {% endfor %}
+        </div>
         <div class="nav-icons">
             {% if EMAIL %}
             <a class="webicon mail small" href="mail:{{ EMAIL }}">Mail</a>
@@ -78,9 +85,16 @@
         </div>
 
         <footer>
-            <div class="social_icons">
+            <div>
+                <a href="/">About</a>&nbsp;&nbsp;
+                <a href="/articles.html">Articles</a>&nbsp;&nbsp;
+                {% for p in PAGES %}
+                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
+                {% endfor %}
+            </div>
+            <div>
                 {% if EMAIL %}
-                <a class="webicon mail" href="mail:{{ EMAIL }}" target="_blank">Mail</a>
+                <a class="webicon mail" href="{{ EMAIL }}" target="_blank">Contact</a>
                 {% endif %}
                 {% if TWITTER_LINK %}
                 <a class="webicon twitter" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
