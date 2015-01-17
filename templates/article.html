@@ -12,24 +12,14 @@
 
   <div class='post-footer'>
     <div class='share-footer'>
-      <div id='dated' class="abbr published" title='{{ article.date.isoformat() }}'>
-        Posted {{ article.locale_date }}
+      <div id='dated' class="abbr published">
+        <span title="title='{{ article.date.isoformat() }}'">{{ article.locale_date }}</span>
+        {% if not article.category == 'posts' %}
+            in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        {% endif %}
       </div>
 
       {% include 'addthis.html' %}
-    </div>
-
-    <div id="article_meta">
-      {% if not article.category == 'posts' %}
-      Category:
-      <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-      {% endif %}
-      {% if article.tags %}
-      <br />Tags:
-      {% for tag in article.tags %}
-      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-      {% endfor %}
-      {% endif %}
     </div>
 
     <div id="article_prevnext">
