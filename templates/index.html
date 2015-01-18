@@ -1,49 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ DEFAULT_LANG }}">
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css">
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css">
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/webicons.css">
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
-    <link href="{{ FEED_DOMAIN }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
-    {% if FEED_RSS %}
-    <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
-    {% endif %}
-
-    <title>{{ AUTHOR }}</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="{{ AUTHOR }}">
-</head>
-
-<body>
-    <section id="homepage-blurb">
-        <img src="{{ USER_LOGO_URL }}" alt="logo">
-        <p>
-        Hello, I am Paul. I work with people, code, and data. My most recent article is <a href="{{ SITEURL }}/{{ articles[0].url }}" class="red">{{ articles[0].title }}</a>. You can <a href="/articles.html">read my writings</a>, <a href="/projects/">see my work</a>, or <a href="/talks/">watch my talks</a> on this site.
-        </p>
-        <p>
-         I co-founded Spokepoint in Boston. Before that, I was a <a href="/what-i-learned-from-2-years-of-data-sciencing/">data scientist</a> in London. I also spent some time in <a href="/my-interview-at-dukascopy-in-geneva">algorithmic trading</a>, <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2409358/" target="_blank">biomedical engineering</a>, and <a href="/how-a-few-screws-cost-2000-and-a-240gb-multinodes-cluster-cost-50/">aerospace engineering</a> in Toronto.
-        <p>
-        Here are my profiles around the web.&nbsp;&nbsp;
-        {% if TWITTER_LINK %}
-        <a class="webicon twitter" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
-        {% endif %}
-        {% if GITHUB_LINK %}
-        <a class="webicon github" href="{{ GITHUB_LINK }}" target="_blank">Github</a>
-        {% endif %}
-        {% if LINKEDIN_LINK %}
-        <a class="webicon linkedin" href="{{ LINKEDIN_LINK }}" target="_blank">Linkedin</a>
-        {% endif %}
-        {% if SOUNDCLOUD_LINK %}
-        <a class="webicon soundcloud" href="{{ SOUNDCLOUD_LINK }}" target="_blank">Soundcloud</a>
-        {% endif %}
-        {% if RSS_LINK %}
-        <a class="webicon rss" href="{{ RSS_LINK }}">RSS</a>
-        {% endif %}
-        </p>
-    </section>
-
-    {% include 'analytics.html' %}
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    {% for article in articles_page.object_list %}
+        <article class='listed'>
+            <h1 class="title">
+                <a href="{{ SITEURL }}/{{ article.url }}" rel='bookmark'>{{ article.title }}</a>
+            </h1>
+            <div class="article-content"> {{ article.content }} </div>
+            <div class="abbr published">
+                Posted  <a href='{{ SITEURL }}/{{ article.url }}' title='{{ article.date.isoformat() }}'>{{ article.locale_date }}</a>{% if not article.category == 'posts' %} in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% endif %}.
+            </div>
+        </article>
+    {% endfor %}
+    {% include 'pagination.html' %}
+{% endblock content %}

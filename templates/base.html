@@ -43,11 +43,10 @@
             {% endif %}
         </div>
         <div>
-            <a href="/">About</a>&nbsp;&nbsp;
-            <a href="/articles.html">Articles</a>&nbsp;&nbsp;
             {% for p in PAGES %}
                 <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
             {% endfor %}
+            <a href="/articles.html">Articles</a>
         </div>
         <div class="nav-icons">
             {% if EMAIL %}
@@ -86,11 +85,10 @@
 
         <footer>
             <div>
-                <a href="/">About</a>&nbsp;&nbsp;
-                <a href="/articles.html">Articles</a>&nbsp;&nbsp;
                 {% for p in PAGES %}
                     <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
                 {% endfor %}
+                <a href="/articles.html">Articles</a>
             </div>
             <div>
                 {% if EMAIL %}
