@@ -50,7 +50,7 @@
         </div>
         <div class="nav-icons">
             {% if EMAIL %}
-            <a class="webicon mail small" href="mail:{{ EMAIL }}">Mail</a>
+            <a class="webicon mail small" href="mailto:{{ EMAIL }}">Contact</a>
             {% endif %}
             {% if TWITTER_LINK %}
             <a class="webicon twitter small" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
@@ -92,7 +92,7 @@
             </div>
             <div>
                 {% if EMAIL %}
-                <a class="webicon mail" href="{{ EMAIL }}" target="_blank">Contact</a>
+                <a class="webicon mail" href="mailto:{{ EMAIL }}">Contact</a>
                 {% endif %}
                 {% if TWITTER_LINK %}
                 <a class="webicon twitter" href="{{ TWITTER_LINK }}" target="_blank">Twitter</a>
