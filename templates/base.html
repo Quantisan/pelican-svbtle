@@ -43,10 +43,12 @@
             {% endif %}
         </div>
         <div>
-            {% for p in PAGES %}
-                <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
-            {% endfor %}
-            <a href="/articles.html">Articles</a>
+            {% if DISPLAY_PAGES_ON_MENU %}
+                {% for p in pages %}
+                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
+                {% endfor %}
+                <a href="/articles.html">Articles</a>
+            {% endif %}
         </div>
         <div class="nav-icons">
             {% if EMAIL %}
@@ -91,9 +93,11 @@
 
         <footer>
             <div>
-                {% for p in PAGES %}
-                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
-                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                        <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>&nbsp;&nbsp;
+                    {% endfor %}
+                {% endif %}
                 <a href="/articles.html">Articles</a>
             </div>
             <div>
